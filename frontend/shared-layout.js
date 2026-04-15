@@ -1,12 +1,20 @@
 (function () {
   var navItems = [
-    { key: "home", label: "Home", icon: "home", href: "#" },
-    { key: "visualization", label: "Dataset Visualization", icon: "visibility", href: "#" },
-    { key: "benchmark", label: "Benchmark", icon: "leaderboard", href: "#" },
-    { key: "detection", label: "Detection Review", icon: "magnification_small", href: "#" },
-    { key: "export", label: "Export", icon: "ios_share", href: "#" },
-    { key: "settings", label: "Settings", icon: "settings", href: "#" }
+    { key: "home", label: "Home", icon: "home", href: "./1-home.html" },
+    { key: "visualization", label: "Dataset Visualization", icon: "visibility", href: "./2-visualization.html" },
+    { key: "benchmark", label: "Benchmark", icon: "leaderboard", href: "./3-benchmark.html" },
+    { key: "detection", label: "Detection Review", icon: "magnification_small", href: "./4-detection.html" },
+    { key: "export", label: "Export", icon: "ios_share", href: "./5-export.html" },
+    { key: "settings", label: "Settings", icon: "settings", href: "./6-settings.html" }
   ];
+
+  function getNavItemHref(key) {
+    var item = navItems.find(function (navItem) {
+      return navItem.key === key;
+    });
+
+    return item ? item.href : "#";
+  }
 
   function buildSidebarFooter(sidebarConfig) {
     var footerType = sidebarConfig.footerType || "none";
@@ -37,7 +45,9 @@
         '<div class="p-4 mt-auto">',
         '<a class="',
         settingsLinkClass,
-        '" href="#">',
+        '" href="',
+        getNavItemHref("settings"),
+        '">',
         '<span class="',
         settingsIconClass,
         '"',
