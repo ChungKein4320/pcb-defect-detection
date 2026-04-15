@@ -1,0 +1,473 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dataset Visualization | Precision Analytics</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="./shared-tailwind-config.js"></script>
+    <link href="./shared-ui.css" rel="stylesheet" />
+    <script defer src="./shared-layout.js"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                "FILL" 0,
+                "wght" 400,
+                "GRAD" 0,
+                "opsz" 24;
+            vertical-align: middle;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+
+<body class="app-shell bg-background text-on-background antialiased overflow-x-hidden">
+    <!-- SideNavBar Shell (Shared Layout Host) -->
+    <aside class="app-sidebar bg-[#f8f9ff] dark:bg-slate-950 border-r border-[#87b5f0]/15" id="app-sidebar"></aside>
+    <!-- Main Content Area -->
+    <main class="app-main min-h-screen">
+        <!-- TopAppBar (Shared Layout Host) -->
+        <header class="app-topbar bg-[#f8f9ff] dark:bg-slate-950" id="app-topbar"></header>
+        <!-- Page Canvas -->
+        <div class="content-wrapper content-wrapper--pb-12 content-wrapper--pt-6">
+            <!-- Context Controls -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-on-surface tracking-tight">
+                        Dataset Visualization
+                    </h2>
+                    <p class="text-on-surface-variant mt-1 text-sm">
+                        Explore class distribution and image characteristics for precision
+                        audits.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 bg-surface-container-low p-1.5 rounded-xl">
+                    <div class="flex flex-col px-3 border-r border-outline-variant/30">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">Active
+                            Dataset</span>
+                        <select
+                            class="bg-transparent border-none text-primary font-semibold text-sm p-0 focus:ring-0 cursor-pointer">
+                            <option>DsPCBSD+ (Main)</option>
+                            <option>Synthetic_PCB_v1</option>
+                            <option>Raw_Inspection_Batch_4</option>
+                        </select>
+                    </div>
+                    <div class="flex p-1 bg-surface-container-lowest rounded-lg shadow-sm">
+                        <button
+                            class="btn btn-primary px-4 py-1.5 rounded-md text-xs font-bold transition-all">
+                            Raw
+                        </button>
+                        <button
+                            class="px-4 py-1.5 rounded-md text-on-surface-variant text-xs font-semibold hover:bg-surface-container-low transition-all">
+                            Balanced
+                        </button>
+                        <button
+                            class="px-4 py-1.5 rounded-md text-on-surface-variant text-xs font-semibold hover:bg-surface-container-low transition-all">
+                            Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- KPI Cards - Bento Style -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="kpi-card kpi-card--p6 border-none">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-primary-container rounded-lg">
+                            <span class="material-symbols-outlined text-primary" data-weight="fill">photo_library</span>
+                        </div>
+                        <span
+                            class="text-xs font-bold text-on-primary-fixed bg-primary-fixed px-2 py-0.5 rounded-full">+12.4%</span>
+                    </div>
+                    <p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest">
+                        Total Images
+                    </p>
+                    <h3 class="text-2xl font-black text-on-surface mt-1 tabular-nums">
+                        48,290
+                    </h3>
+                </div>
+                <div class="kpi-card kpi-card--p6 border-none">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-tertiary-container rounded-lg">
+                            <span class="material-symbols-outlined text-tertiary" data-weight="fill">category</span>
+                        </div>
+                        <span
+                            class="text-xs font-bold text-on-tertiary-fixed bg-tertiary-fixed px-2 py-0.5 rounded-full">Static</span>
+                    </div>
+                    <p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest">
+                        Defined Classes
+                    </p>
+                    <h3 class="text-2xl font-black text-on-surface mt-1 tabular-nums">
+                        14
+                    </h3>
+                </div>
+                <div class="kpi-card kpi-card--p6 border-none">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-surface-container-highest rounded-lg">
+                            <span class="material-symbols-outlined text-on-primary-fixed-variant"
+                                data-weight="fill">target</span>
+                        </div>
+                        <span
+                            class="text-xs font-bold text-on-primary-fixed bg-primary-fixed px-2 py-0.5 rounded-full">-2.1%</span>
+                    </div>
+                    <p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest">
+                        Avg. Objects/Image
+                    </p>
+                    <h3 class="text-2xl font-black text-on-surface mt-1 tabular-nums">
+                        8.42
+                    </h3>
+                </div>
+                <div class="kpi-card kpi-card--p6 border-none">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-error-container/20 rounded-lg">
+                            <span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+                        </div>
+                        <span
+                            class="text-xs font-bold text-on-error-container bg-error-container px-2 py-0.5 rounded-full">High</span>
+                    </div>
+                    <p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest">
+                        Defect Density
+                    </p>
+                    <h3 class="text-2xl font-black text-on-surface mt-1 tabular-nums">
+                        12.5%
+                    </h3>
+                </div>
+            </div>
+            <!-- Main Panels -->
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Class Distribution - Horizontal Bar -->
+                <div class="chart-container chart-container--p8 col-span-12 lg:col-span-7">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h4 class="text-lg font-bold text-on-surface">
+                                Class Distribution
+                            </h4>
+                            <p class="text-xs text-on-surface-variant font-medium">
+                                Frequency of defect categories across the selected partition.
+                            </p>
+                        </div>
+                        <button class="text-primary text-sm font-semibold flex items-center gap-1">
+                            Full Report
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="group">
+                            <div class="flex justify-between text-xs font-bold mb-1.5 uppercase tracking-wide">
+                                <span class="text-on-surface">Missing Component</span>
+                                <span class="text-on-surface-variant">12,402</span>
+                            </div>
+                            <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all group-hover:bg-primary-dim"
+                                    style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between text-xs font-bold mb-1.5 uppercase tracking-wide">
+                                <span class="text-on-surface">Short Circuit</span>
+                                <span class="text-on-surface-variant">8,110</span>
+                            </div>
+                            <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all group-hover:bg-primary-dim"
+                                    style="width: 62%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between text-xs font-bold mb-1.5 uppercase tracking-wide">
+                                <span class="text-on-surface">Open Circuit</span>
+                                <span class="text-on-surface-variant">4,200</span>
+                            </div>
+                            <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+                                <div class="h-full bg-secondary-dim rounded-full transition-all opacity-80"
+                                    style="width: 32%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between text-xs font-bold mb-1.5 uppercase tracking-wide">
+                                <span class="text-on-surface">Solder Bridge</span>
+                                <span class="text-on-surface-variant">2,950</span>
+                            </div>
+                            <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+                                <div class="h-full bg-secondary-dim rounded-full transition-all opacity-80"
+                                    style="width: 22%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between text-xs font-bold mb-1.5 uppercase tracking-wide">
+                                <span class="text-on-surface">Excess Solder</span>
+                                <span class="text-on-surface-variant">1,120</span>
+                            </div>
+                            <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+                                <div class="h-full bg-tertiary rounded-full transition-all" style="width: 9%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aspect Ratio & Shape - Asymmetric Side -->
+                <div class="col-span-12 lg:col-span-5 flex flex-col gap-8">
+                    <div class="chart-container chart-container--p8 flex-1">
+                        <h4 class="text-lg font-bold text-on-surface mb-6">
+                            Aspect Ratio Distribution
+                        </h4>
+                        <div class="aspect-square w-full relative flex items-center justify-center">
+                            <!-- SVG Pie Chart Representation -->
+                            <svg class="w-56 h-56 -rotate-90" viewbox="0 0 32 32">
+                                <circle cx="16" cy="16" fill="transparent" r="16" stroke="#005ac2"
+                                    stroke-dasharray="75 100" stroke-width="32"></circle>
+                                <circle cx="16" cy="16" fill="transparent" r="16" stroke="#5f5c78"
+                                    stroke-dasharray="25 100" stroke-dashoffset="-75" stroke-width="32"></circle>
+                            </svg>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center bg-surface-container-lowest rounded-full w-40 h-40 m-auto shadow-sm">
+                                <span class="text-3xl font-black text-on-surface">3:4</span>
+                                <span
+                                    class="text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Dominant</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-center gap-6 mt-6">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-primary"></span>
+                                <span class="text-xs font-semibold text-on-surface">Portrait (75%)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-tertiary"></span>
+                                <span class="text-xs font-semibold text-on-surface">Landscape (25%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sample Viewer - Full Width Grid -->
+                <div class="col-span-12">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-xl font-bold text-on-surface">Sample Viewer</h4>
+                            <p class="text-sm text-on-surface-variant">
+                                Live visual audit of ground-truth bounding boxes.
+                            </p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="p-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all">
+                                <span class="material-symbols-outlined">grid_view</span>
+                            </button>
+                            <button
+                                class="p-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-highest transition-all">
+                                <span class="material-symbols-outlined">view_list</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        <!-- Image Card 1 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer shadow-sm hover:shadow-md transition-all">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="top-down high resolution photography of a complex green printed circuit board with dense surface mount components and microchips"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBprwIaU2M0DFD4A4haRIaB1cOcmOqGroWjZ2MnAGHKWGbeh5KQ4h2CdhGLiHa_6xDQMvfvD-CxqN_ZxqUdDMEsROAOLO2L6zDkKVZLX-WgdziiGu8p-zODursFLD9ZakKf7o7N649o1x01arVhMIrfK_r4GwWBRytT2XCHLKSe-fIuN4i1cog5QgV-P_vhNUKmHuD-tJe8eap7Bn-4Qkcp3sMpWNE5csgcX0k-Z-mIRjhbkMOgO9EHtULfnmufRJozgRcoc-vTtQ" />
+                            <!-- Bounding Box Overlay (Simulated) -->
+                            <div class="absolute inset-0 border-2 border-error/60 m-8 rounded-sm pointer-events-none">
+                                <span
+                                    class="absolute -top-6 left-0 bg-error text-on-error text-[8px] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Solder_Bridge:
+                                    0.98</span>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                                <span class="text-[10px] text-white font-medium uppercase tracking-widest">ID:
+                                    PCB_9421_X</span>
+                            </div>
+                        </div>
+                        <!-- Image Card 2 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer shadow-sm hover:shadow-md transition-all">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="detailed close-up macro shot of electronic microprocessors and blue circuit board pathways with futuristic clean laboratory lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-6kLK43DRD44HCzZQy3i1pyR3ksGSjRVIf0afHOUG10fshpWSz4ukmjgV-S2ZgaOJIjoJrsEgazL88XgSVBax1z6ocpXeD6XQ38kuVvVKVzL_s7M84z0f5gu4NMvWYQXe1_ZqILNuWqyLYcjWN7myPZ4GM4d_TBir5mSaOklpFVYtQCa9ywAQquJPKIiIbGBmYqWQNnWrpmrmSaqX8rJsAIfmu8SsOiHZiUxzLGtutHOLfk0CX1BMS3SkpVKhdV1CLkMOimmCJQ" />
+                            <div
+                                class="absolute inset-0 border-2 border-primary/60 m-12 rounded-sm pointer-events-none">
+                                <span
+                                    class="absolute -top-6 left-0 bg-primary text-on-primary text-[8px] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Normal:
+                                    1.00</span>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                                <span class="text-[10px] text-white font-medium uppercase tracking-widest">ID:
+                                    PCB_9422_X</span>
+                            </div>
+                        </div>
+                        <!-- Image Card 3 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer shadow-sm hover:shadow-md transition-all">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="professional industrial inspection of a computer motherboard showing copper traces and golden pins in sharp detail"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdkSFawQlnBw0yjwrE_ocK-ZfUsmqP0gCD0gFRRQnEgEHkS4oWhYYZXzC_Qs1fbXHniunRzXOXTAG28h0-J8yQOvrLzkSbmjZwZwueRQBk-W8fRJVF65qyukTlkIDNk1fvv0pbRa4nAcfgEm85Mdp0M8bFJGOue8hoYc_FZ2UnaugPVcT8q6tSP9w_fqhSYgbAlmeL7fwBMzJ3wWFCmEiYumS4AMnTom3Ax8PUkNyNBlfc_zyBso5b3j2GCoPdkVWDkRn2l2As9A" />
+                            <div class="absolute inset-0 border-2 border-error/60 m-4 rounded-sm pointer-events-none">
+                                <span
+                                    class="absolute -top-6 left-0 bg-error text-on-error text-[8px] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Open_Circuit:
+                                    0.89</span>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                                <span class="text-[10px] text-white font-medium uppercase tracking-widest">ID:
+                                    PCB_9423_X</span>
+                            </div>
+                        </div>
+                        <!-- Image Card 4 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer shadow-sm hover:shadow-md transition-all">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="highly technical view of silicon wafer manufacturing process with microscopic precision and teal-toned industrial lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2r4zQeAJFHHRPK4Wzjy3zNN2PeIxQL3PQMdUJSgQGuY5_TcirSaj7D5ThhkoDZi3Utn3HdiyvxLfeZXlI01fI_3oExasDG7T0js1tkimnPbbezWQvKfzu_EeD8o7RBzlXqeB_jhI6XPNPXeuufGINVV23cZq8ajEwLfwXRI38VB9Qm-V6YzX2q87fdeYcvzA3B-BFleP3BMjlfafNb4fZfFOZMOguaqjx7uQmx3_UacZSTi0XmhcBuCxGh66Oss_nhjTbgInv4w" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                                <span class="text-[10px] text-white font-medium uppercase tracking-widest">ID:
+                                    PCB_9424_X</span>
+                            </div>
+                        </div>
+                        <!-- Image Card 5 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer shadow-sm hover:shadow-md transition-all">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="industrial robotic arm performing optical inspection on a circuit board in a high-tech manufacturing facility"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZzwg6NGC4U6xKmzOCUWgibh1TXCGuOW-kjw2-xTKk3rcLlXzbCZz4D0ELPU14hFAGbs0jwmzcz7EhKcQMzHV5rK1ACeiRTy3NHHSQRZVfkpUbD8bW0WKHbYGo1FcCYYvZaCRFJVaK8crjn8B8VzwD8JabomJQJY3kfJUbdzsO7o9E-Cilf8hX_rzffT9-yJNEd99DrgOu6VEdm_r37Yiaq6SGUpgGlbyF7UzukRZNOZDXzcR4ihb4i-GW50JgZH-K4p9LLqCK4A" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                                <span class="text-[10px] text-white font-medium uppercase tracking-widest">ID:
+                                    PCB_9425_X</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Comparison Panel - Side by Side -->
+                <div
+                    class="chart-container chart-container--p8 col-span-12 bg-surface-container-low rounded-2xl border border-outline-variant/10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-primary text-3xl">compare_arrows</span>
+                        <div>
+                            <h4 class="text-xl font-extrabold text-on-surface">
+                                Raw vs Balanced Distribution
+                            </h4>
+                            <p class="text-sm text-on-surface-variant font-medium">
+                                Impact of oversampling minority defect classes on dataset
+                                health.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Raw Distribution -->
+                        <div class="space-y-4">
+                            <h5
+                                class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-6 flex items-center justify-between">
+                                Raw Dataset Partition
+                                <span
+                                    class="text-[10px] bg-error-container text-on-error-container px-2 py-0.5 rounded">High
+                                    Variance</span>
+                            </h5>
+                            <div class="flex items-end gap-3 h-48">
+                                <div class="flex-1 bg-primary rounded-t-lg" style="height: 100%"></div>
+                                <div class="flex-1 bg-primary rounded-t-lg" style="height: 70%"></div>
+                                <div class="flex-1 bg-primary rounded-t-lg" style="height: 15%"></div>
+                                <div class="flex-1 bg-primary rounded-t-lg" style="height: 8%"></div>
+                                <div class="flex-1 bg-primary rounded-t-lg" style="height: 5%"></div>
+                            </div>
+                            <div
+                                class="flex justify-between px-1 text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">
+                                <span>Normal</span>
+                                <span>Solder</span>
+                                <span>Open</span>
+                                <span>Missing</span>
+                                <span>Foreign</span>
+                            </div>
+                        </div>
+                        <!-- Balanced Distribution -->
+                        <div class="space-y-4">
+                            <h5
+                                class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-6 flex items-center justify-between">
+                                Balanced (Oversampled)
+                                <span
+                                    class="text-[10px] bg-primary-container text-on-primary-fixed px-2 py-0.5 rounded">Optimized</span>
+                            </h5>
+                            <div class="flex items-end gap-3 h-48">
+                                <div class="flex-1 bg-primary-dim rounded-t-lg" style="height: 60%"></div>
+                                <div class="flex-1 bg-primary-dim rounded-t-lg" style="height: 58%"></div>
+                                <div class="flex-1 bg-primary-dim rounded-t-lg" style="height: 55%"></div>
+                                <div class="flex-1 bg-primary-dim rounded-t-lg" style="height: 56%"></div>
+                                <div class="flex-1 bg-primary-dim rounded-t-lg" style="height: 52%"></div>
+                            </div>
+                            <div
+                                class="flex justify-between px-1 text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">
+                                <span>Normal</span>
+                                <span>Solder</span>
+                                <span>Open</span>
+                                <span>Missing</span>
+                                <span>Foreign</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Floating Action Button - Contextual for Dataset Export -->
+    <button
+        class="btn btn-primary fixed bottom-8 right-8 flex items-center gap-3 px-6 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95 z-50">
+        <span class="material-symbols-outlined">download</span>
+        <span class="font-bold text-sm tracking-tight">Export Visuals</span>
+    </button>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            window.renderSharedLayout({
+                sidebar: {
+                    active: "visualization",
+                    includeSettingsInNav: false,
+                    footerType: "settings-link",
+                    brandClass: "px-8 py-10",
+                    brandTitleClass: "text-lg font-black text-[#00345e] dark:text-blue-50 tracking-tight",
+                    brandSubTitleClass: "text-[10px] font-bold text-on-surface-variant tracking-widest uppercase mt-1",
+                    navBaseClass:
+                        "flex items-center px-4 py-3 text-[#5f5c78] hover:bg-[#eff4ff]/50 transition-all font-medium text-sm",
+                    navActiveClass:
+                        "flex items-center px-4 py-3 bg-[#eff4ff] text-[#005ac2] rounded-r-full font-medium text-sm",
+                    iconSpacingClass: " mr-3"
+                },
+                topbar: {
+                    leftClass: "flex items-center gap-4 flex-1",
+                    rightClass: "flex items-center gap-6",
+                    search: {
+                        variant: "relative",
+                        containerClass: "relative w-96 group",
+                        iconClass: "text-on-surface-variant text-sm",
+                        inputClass:
+                            "w-full bg-[#eff4ff] border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none transition-all",
+                        placeholder: "Search datasets or models..."
+                    },
+                    actionButtonClass:
+                        "btn-icon p-2 text-[#306197] hover:bg-[#eff4ff] rounded-full transition-colors",
+                    notificationDotClass:
+                        "absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface",
+                    showAvatar: true,
+                    avatarWrapperClass:
+                        "w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20",
+                    avatarImageClass: "w-full h-full object-cover",
+                    avatarAlt: "User Profile",
+                    avatarSrc:
+                        "https://lh3.googleusercontent.com/aida-public/AB6AXuA0PZsX9n9fg5WxrCtdyvSk_KUiEqP0j-O6kLfCg80THcHNonUtnayCwLvyeg3cbriccnIfrxADtwSy9ZqA1QHi5fzDT5I2gpf944Hv1RSIcB2p5OEHUMQRNbIpfeC3MnM8bv0liUhvIMiFMUAUMvCT7LprPEeAkV_an-9ZX88GBpYxfJzpTKlF3OMHHOsQE7WxzE4y6qXX0sEN-hNv0gHTrbNYX4BjI10zUpIOqrLDVqZNuYACzi3MDVWQLP_qO-qAK4P9XTVqoA"
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

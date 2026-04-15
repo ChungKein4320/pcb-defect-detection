@@ -1,0 +1,675 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Benchmark - Precision Analytics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="./shared-tailwind-config.js"></script>
+    <link href="./shared-ui.css" rel="stylesheet" />
+    <script defer src="./shared-layout.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="app-shell bg-surface font-body text-on-surface">
+    <aside
+      class="app-sidebar bg-[#f8f9ff] dark:bg-slate-950 border-r border-[#87b5f0]/15"
+      id="app-sidebar"
+    ></aside>
+    <main class="app-main min-h-screen">
+      <header class="app-topbar bg-[#f8f9ff] dark:bg-slate-950" id="app-topbar"></header>
+      <div class="content-wrapper space-y-8">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <h3 class="text-3xl font-black text-on-surface tracking-tight">
+              Model Benchmark
+            </h3>
+            <p class="text-on-surface-variant mt-1 text-lg">
+              Comparative performance analysis across selected architectures.
+            </p>
+          </div>
+          <div
+            class="flex flex-wrap gap-4 items-center bg-surface-container-low p-2 rounded-2xl border border-outline-variant/10 shadow-sm"
+          >
+            <div class="px-4 py-1">
+              <label
+                class="block text-[10px] font-bold uppercase text-on-surface-variant/70 mb-1"
+                >Dataset</label
+              >
+              <select
+                class="bg-transparent border-none p-0 text-sm font-semibold focus:ring-0 cursor-pointer"
+              >
+                <option>PCB-Defect-v4</option>
+                <option>Soldering-v2</option>
+              </select>
+            </div>
+            <div class="h-8 w-px bg-outline-variant/20"></div>
+            <div class="px-4 py-1">
+              <label
+                class="block text-[10px] font-bold uppercase text-on-surface-variant/70 mb-1"
+                >Architectures</label
+              >
+              <div class="flex gap-1">
+                <span
+                  class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold"
+                  >YOLOv8x</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold"
+                  >RT-DETR</span
+                >
+                <span
+                  class="text-on-surface-variant px-1 py-0.5 text-[10px] font-bold"
+                  >+3</span
+                >
+              </div>
+            </div>
+            <div class="h-8 w-px bg-outline-variant/20"></div>
+            <div class="px-4 py-1">
+              <label
+                class="block text-[10px] font-bold uppercase text-on-surface-variant/70 mb-1"
+                >Metric</label
+              >
+              <select
+                class="bg-transparent border-none p-0 text-sm font-semibold focus:ring-0 cursor-pointer text-primary"
+              >
+                <option>mAP@0.5</option>
+                <option>F1 Score</option>
+                <option>Precision</option>
+                <option>Recall</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="kpi-card kpi-card--lifted kpi-card--p8 border border-outline-variant/5"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <p
+                class="text-[10px] font-extrabold uppercase tracking-[0.1em] text-on-surface-variant/60"
+              >
+                Top Performer
+              </p>
+              <span
+                class="material-symbols-outlined text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >workspace_premium</span
+              >
+            </div>
+            <h4 class="text-2xl font-black text-on-surface tracking-tight">
+              RT-DETR-L
+            </h4>
+            <p class="text-on-surface-variant text-sm mt-1">
+              SOTA Performance Layer
+            </p>
+          </div>
+          <div
+            class="kpi-card kpi-card--lifted kpi-card--p8 border border-outline-variant/5"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <p
+                class="text-[10px] font-extrabold uppercase tracking-[0.1em] text-on-surface-variant/60"
+              >
+                Max Accuracy
+              </p>
+              <span class="material-symbols-outlined text-primary"
+                >insights</span
+              >
+            </div>
+            <h4 class="text-4xl font-black text-on-surface tracking-tighter">
+              0.982
+              <span
+                class="text-sm font-medium tracking-normal text-on-surface-variant"
+                >mAP</span
+              >
+            </h4>
+            <div
+              class="w-full bg-primary-container h-1.5 rounded-full mt-4 overflow-hidden"
+            >
+              <div class="bg-primary h-full w-[98.2%]"></div>
+            </div>
+          </div>
+          <div
+            class="kpi-card kpi-card--lifted kpi-card--p8 border border-outline-variant/5"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <p
+                class="text-[10px] font-extrabold uppercase tracking-[0.1em] text-on-surface-variant/60"
+              >
+                Inference Speed
+              </p>
+              <span class="material-symbols-outlined text-primary">speed</span>
+            </div>
+            <h4 class="text-4xl font-black text-on-surface tracking-tighter">
+              142
+              <span
+                class="text-sm font-medium tracking-normal text-on-surface-variant"
+                >FPS</span
+              >
+            </h4>
+            <p
+              class="text-tertiary text-xs mt-2 font-medium flex items-center gap-1"
+            >
+              <span class="material-symbols-outlined text-[14px]">bolt</span>
+              Optimized for A100-80GB
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div
+            class="table-shell table-shell--lifted table-shell--soft-border lg:col-span-8"
+          >
+            <div
+              class="p-6 border-b border-outline-variant/10 flex justify-between items-center"
+            >
+              <h4 class="font-bold text-on-surface">Leaderboard Standings</h4>
+              <button
+                class="text-primary text-xs font-bold flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">download</span>
+                Export CSV
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="app-table w-full text-left">
+                <thead class="bg-surface-container-low/50">
+                  <tr>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest"
+                    >
+                      Model Name
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest text-center"
+                    >
+                      mAP@.5
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest text-center"
+                    >
+                      F1
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest text-center"
+                    >
+                      Precision
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest text-center"
+                    >
+                      Recall
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[10px] font-black uppercase text-on-surface-variant/70 tracking-widest text-right"
+                    >
+                      FPS
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/10">
+                  <tr
+                    class="hover:bg-surface-container-low/30 transition-colors"
+                  >
+                    <td class="px-6 py-4 font-bold text-sm">RT-DETR-L</td>
+                    <td class="px-6 py-4 text-center text-sm font-medium">
+                      0.982
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      <span
+                        class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[11px] font-bold"
+                        >0.974</span
+                      >
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.965
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.984
+                    </td>
+                    <td
+                      class="px-6 py-4 text-right font-mono text-xs font-bold"
+                    >
+                      142.1
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-surface-container-low/30 transition-colors"
+                  >
+                    <td class="px-6 py-4 font-bold text-sm">YOLOv8x-Aug</td>
+                    <td class="px-6 py-4 text-center text-sm font-medium">
+                      0.971
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      <span
+                        class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[11px] font-bold"
+                        >0.968</span
+                      >
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.958
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.978
+                    </td>
+                    <td
+                      class="px-6 py-4 text-right font-mono text-xs font-bold"
+                    >
+                      118.4
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-surface-container-low/30 transition-colors"
+                  >
+                    <td class="px-6 py-4 font-bold text-sm">EfficientDet-D3</td>
+                    <td class="px-6 py-4 text-center text-sm font-medium">
+                      0.945
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      <span
+                        class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[11px] font-bold"
+                        >0.931</span
+                      >
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.942
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.920
+                    </td>
+                    <td
+                      class="px-6 py-4 text-right font-mono text-xs font-bold"
+                    >
+                      64.5
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-surface-container-low/30 transition-colors"
+                  >
+                    <td class="px-6 py-4 font-bold text-sm">ResNet101-FRCNN</td>
+                    <td class="px-6 py-4 text-center text-sm font-medium">
+                      0.928
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      <span
+                        class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[11px] font-bold"
+                        >0.915</span
+                      >
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.910
+                    </td>
+                    <td
+                      class="px-6 py-4 text-center text-sm text-on-surface-variant"
+                    >
+                      0.921
+                    </td>
+                    <td
+                      class="px-6 py-4 text-right font-mono text-xs font-bold"
+                    >
+                      14.2
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col gap-8">
+            <div
+              class="chart-container chart-container--lifted chart-container--soft-border chart-container--p6 flex-1"
+            >
+              <div class="flex justify-between items-center mb-6">
+                <h4 class="font-bold text-on-surface">
+                  Precision-Recall Curve
+                </h4>
+                <span
+                  class="material-symbols-outlined text-on-surface-variant text-sm"
+                  >open_in_full</span
+                >
+              </div>
+              <div class="relative h-48 w-full">
+                <div
+                  class="absolute inset-0 flex items-end justify-between px-2"
+                >
+                  <div
+                    class="h-[80%] w-0.5 bg-outline-variant/20 relative"
+                  ></div>
+                  <div
+                    class="h-0.5 w-full bg-outline-variant/20 absolute bottom-0"
+                  ></div>
+                  <svg
+                    class="w-full h-full absolute inset-0"
+                    preserveaspectratio="none"
+                    viewbox="0 0 100 100"
+                  >
+                    <path
+                      d="M0,10 Q20,10 40,15 T70,30 T90,60 T100,100"
+                      fill="none"
+                      stroke="#005ac2"
+                      stroke-width="2"
+                    ></path>
+                    <path
+                      d="M0,20 Q30,20 50,35 T80,60 T100,100"
+                      fill="none"
+                      stroke="#5f5c78"
+                      stroke-dasharray="4"
+                      stroke-width="2"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="absolute top-2 right-2 text-[10px] space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-0.5 bg-primary"></span>
+                    <span class="text-on-surface-variant">RT-DETR</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-0.5 bg-tertiary"></span>
+                    <span class="text-on-surface-variant">Baseline</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-4 flex justify-between text-[10px] font-bold text-on-surface-variant/60 uppercase"
+              >
+                <span>Recall</span>
+                <span>Precision</span>
+              </div>
+            </div>
+            <div
+              class="chart-container chart-container--lifted chart-container--soft-border chart-container--p6 flex-1"
+            >
+              <div class="flex justify-between items-center mb-6">
+                <h4 class="font-bold text-on-surface">Model Comparison</h4>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary-container"></div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="space-y-1">
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-on-surface-variant uppercase"
+                  >
+                    <span>RT-DETR-L</span>
+                    <span>98.2%</span>
+                  </div>
+                  <div
+                    class="h-6 w-full bg-surface-container-low rounded flex items-center px-1"
+                  >
+                    <div class="h-4 bg-primary rounded-sm w-[98%]"></div>
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-on-surface-variant uppercase"
+                  >
+                    <span>YOLOv8x</span>
+                    <span>97.1%</span>
+                  </div>
+                  <div
+                    class="h-6 w-full bg-surface-container-low rounded flex items-center px-1"
+                  >
+                    <div class="h-4 bg-primary/80 rounded-sm w-[97%]"></div>
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-on-surface-variant uppercase"
+                  >
+                    <span>EfficientDet</span>
+                    <span>94.5%</span>
+                  </div>
+                  <div
+                    class="h-6 w-full bg-surface-container-low rounded flex items-center px-1"
+                  >
+                    <div class="h-4 bg-primary/60 rounded-sm w-[94%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="chart-container chart-container--lifted chart-container--soft-border chart-container--p8"
+        >
+          <div class="flex justify-between items-center mb-8">
+            <div>
+              <h4 class="font-bold text-on-surface">
+                Per-Class Performance Heatmap
+              </h4>
+              <p class="text-xs text-on-surface-variant">
+                Class-wise detection precision across different defect types
+              </p>
+            </div>
+            <div
+              class="flex items-center gap-4 text-[10px] font-bold text-on-surface-variant uppercase"
+            >
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 bg-primary/20 rounded-sm"></div>
+                Low
+              </div>
+              <div class="flex items-center gap-1">
+                <div class="w-3 h-3 bg-primary rounded-sm"></div>
+                High
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-2">
+            <div class="col-span-1"></div>
+            <div
+              class="text-[10px] font-black text-center text-on-surface-variant uppercase py-2"
+            >
+              Missing Comp
+            </div>
+            <div
+              class="text-[10px] font-black text-center text-on-surface-variant uppercase py-2"
+            >
+              Short Ckt
+            </div>
+            <div
+              class="text-[10px] font-black text-center text-on-surface-variant uppercase py-2"
+            >
+              Bent Pin
+            </div>
+            <div
+              class="text-[10px] font-black text-center text-on-surface-variant uppercase py-2"
+            >
+              Solder Bridge
+            </div>
+            <div
+              class="text-[10px] font-black text-center text-on-surface-variant uppercase py-2"
+            >
+              Excess Solder
+            </div>
+            <div
+              class="text-[10px] font-black text-on-surface-variant uppercase flex items-center"
+            >
+              RT-DETR-L
+            </div>
+            <div
+              class="bg-primary rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.99
+            </div>
+            <div
+              class="bg-primary/90 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.98
+            </div>
+            <div
+              class="bg-primary rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.99
+            </div>
+            <div
+              class="bg-primary/80 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.96
+            </div>
+            <div
+              class="bg-primary/95 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.98
+            </div>
+            <div
+              class="text-[10px] font-black text-on-surface-variant uppercase flex items-center"
+            >
+              YOLOv8x
+            </div>
+            <div
+              class="bg-primary/85 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.97
+            </div>
+            <div
+              class="bg-primary/90 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.98
+            </div>
+            <div
+              class="bg-primary/70 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.95
+            </div>
+            <div
+              class="bg-primary/95 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.98
+            </div>
+            <div
+              class="bg-primary/80 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.96
+            </div>
+            <div
+              class="text-[10px] font-black text-on-surface-variant uppercase flex items-center"
+            >
+              EfficientDet
+            </div>
+            <div
+              class="bg-primary/60 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.92
+            </div>
+            <div
+              class="bg-primary/70 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.94
+            </div>
+            <div
+              class="bg-primary/50 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.88
+            </div>
+            <div
+              class="bg-primary/65 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.93
+            </div>
+            <div
+              class="bg-primary/55 rounded-lg h-12 flex items-center justify-center text-xs font-bold text-on-primary"
+            >
+              0.91
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="ml-64 p-8 border-t border-outline-variant/10 text-center">
+      <p class="text-xs text-on-surface-variant/60 font-medium tracking-wide">
+        © 2024 Precision Analytics Industrial. All Rights Reserved. Proprietary
+        Diagnostic Interface.
+      </p>
+    </footer>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        window.renderSharedLayout({
+          sidebar: {
+            active: "benchmark",
+            footerType: "admin-profile",
+            footerAvatarSrc:
+              "https://lh3.googleusercontent.com/aida-public/AB6AXuDvJbcpEAMUTBMk4E-dbmIfk4Q-OeN2V3mbu0fNllk8_YqeP4St5PDFnPeCTSdC5SGryiaVzAPrVIujIqXZrSF56OICTWBSx1SVzAnfUYzOFyNTUKvyxjh2DaU3PWJUCKgeXLk5riGqRTuI2jIurIkei1HgoZSYC6NyCVXbYrTS4U2N27cpI4oHVvOc3Txgdld0zCb24tcThcjjkbLhr-PrbfJz4dvGvru0VWcno4v2o17l8DMY_QEIkHdYS8Z3aobu_bq9q8edTQ",
+            brandClass: "px-8 py-6",
+            brandTitleClass:
+              "text-lg font-black text-[#00345e] dark:text-blue-50 tracking-tighter",
+            brandSubTitleClass:
+              "text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold mt-1",
+            navBaseClass:
+              "flex items-center px-4 py-3 text-[#5f5c78] dark:text-slate-400 hover:text-[#00345e] hover:bg-[#eff4ff]/50 transition-all rounded-lg group",
+            navActiveClass:
+              "flex items-center px-4 py-3 bg-[#eff4ff] dark:bg-slate-900 text-[#005ac2] dark:text-blue-400 rounded-r-full group",
+            iconSpacingClass: " mr-3",
+            labelClass: "font-['Inter'] text-sm font-medium"
+          },
+          topbar: {
+            leftClass: "flex items-center gap-4 flex-1",
+            rightClass: "flex items-center gap-6",
+            search: {
+              variant: "relative",
+              containerClass:
+                "relative w-96 group",
+              iconClass: "text-on-surface-variant text-sm",
+              inputClass:
+                "w-full bg-[#eff4ff] border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none transition-all",
+              placeholder: "Search datasets or models..."
+            },
+            actionButtonClass:
+              "btn-icon p-2 text-[#306197] hover:bg-[#eff4ff] rounded-full transition-colors",
+            notificationDotClass:
+              "absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface",
+            showAvatar: true,
+            avatarWrapperClass:
+              "w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20",
+            avatarImageClass: "w-full h-full object-cover",
+            avatarAlt: "User Profile",
+            avatarSrc:
+              "https://lh3.googleusercontent.com/aida-public/AB6AXuA0PZsX9n9fg5WxrCtdyvSk_KUiEqP0j-O6kLfCg80THcHNonUtnayCwLvyeg3cbriccnIfrxADtwSy9ZqA1QHi5fzDT5I2gpf944Hv1RSIcB2p5OEHUMQRNbIpfeC3MnM8bv0liUhvIMiFMUAUMvCT7LprPEeAkV_an-9ZX88GBpYxfJzpTKlF3OMHHOsQE7WxzE4y6qXX0sEN-hNv0gHTrbNYX4BjI10zUpIOqrLDVqZNuYACzi3MDVWQLP_qO-qAK4P9XTVqoA"
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

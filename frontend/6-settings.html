@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Precision Analytics - Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="./shared-tailwind-config.js"></script>
+    <link href="./shared-ui.css" rel="stylesheet" />
+    <script defer src="./shared-layout.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="app-shell bg-[#f8f9ff] text-[#00345e] antialiased">
+    <!-- SideNavBar Anchor -->
+    <aside class="app-sidebar bg-[#f8f9ff] border-r border-[#87b5f0]/15" id="app-sidebar"></aside>
+    <!-- Main Content Canvas -->
+    <main class="app-main min-h-screen">
+        <!-- TopAppBar Anchor -->
+        <header class="app-topbar bg-[#f8f9ff] dark:bg-slate-950" id="app-topbar"></header>
+        <section class="content-wrapper content-wrapper--narrow content-wrapper--py-10">
+            <!-- Header Section -->
+            <div class="mb-12">
+                <h2 class="text-4xl font-extrabold tracking-tight text-[#00345e] mb-2">Settings</h2>
+                <p class="text-[#306197] text-lg">Configure interface and visualization defaults.</p>
+            </div>
+            <!-- Bento Grid Settings Layout -->
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Interface Card (Large) -->
+                <div
+                    class="chart-container chart-container--flat chart-container--p8 col-span-12 lg:col-span-7 bg-white border border-[#87b5f0]/10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-[#005ac2]" data-icon="palette">palette</span>
+                        <h3 class="text-xl font-bold text-[#00345e]">Interface</h3>
+                    </div>
+                    <div class="space-y-10">
+                        <!-- Theme Selector -->
+                        <div>
+                            <label class="block text-sm font-semibold text-[#306197] mb-4">Theme Appearance</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button
+                                    class="flex items-center justify-between px-5 py-4 rounded-xl border-2 border-[#005ac2] bg-[#eff4ff] text-[#005ac2]">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
+                                        <span class="font-medium">Light</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-sm" data-icon="check_circle"
+                                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-3 px-5 py-4 rounded-xl border-2 border-transparent bg-[#f8f9ff] text-[#5f5c78] hover:border-[#87b5f0]/30 transition-all">
+                                    <span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+                                    <span class="font-medium">Dark</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Accent Color -->
+                        <div>
+                            <label class="block text-sm font-semibold text-[#306197] mb-4">System Accent Color</label>
+                            <div class="flex gap-4">
+                                <button
+                                    class="w-10 h-10 rounded-full bg-[#005ac2] ring-4 ring-[#005ac2]/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white text-sm"
+                                        data-icon="check">check</span>
+                                </button>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-[#5f5c78] hover:scale-110 transition-transform"></button>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-[#9f403d] hover:scale-110 transition-transform"></button>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-[#306197] hover:scale-110 transition-transform"></button>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-[#004eaa] hover:scale-110 transition-transform"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Visualization Settings (Asymmetric Side) -->
+                <div
+                    class="chart-container chart-container--flat chart-container--p8 col-span-12 lg:col-span-5 bg-white border border-[#87b5f0]/10 flex flex-col">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-[#005ac2]" data-icon="layers">layers</span>
+                        <h3 class="text-xl font-bold text-[#00345e]">Visualization</h3>
+                    </div>
+                    <div class="space-y-8 flex-1">
+                        <!-- Bounding Box Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <label class="text-sm font-semibold text-[#306197]">Bounding Box Thickness</label>
+                                <span class="text-xs font-bold text-[#005ac2]">2px</span>
+                            </div>
+                            <input
+                                class="w-full h-1.5 bg-[#eff4ff] rounded-lg appearance-none cursor-pointer accent-[#005ac2]"
+                                type="range" />
+                        </div>
+                        <!-- Opacity Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <label class="text-sm font-semibold text-[#306197]">Overlay Opacity</label>
+                                <span class="text-xs font-bold text-[#005ac2]">65%</span>
+                            </div>
+                            <input
+                                class="w-full h-1.5 bg-[#eff4ff] rounded-lg appearance-none cursor-pointer accent-[#005ac2]"
+                                type="range" />
+                        </div>
+                        <!-- Label Visibility Toggle -->
+                        <div class="flex items-center justify-between py-2">
+                            <div>
+                                <p class="text-sm font-semibold text-[#306197]">Class Label Visibility</p>
+                                <p class="text-[11px] text-[#5f5c78]">Show defect names on heatmap overlays</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked="" class="sr-only peer" type="checkbox" />
+                                <div
+                                    class="w-11 h-6 bg-[#dce9ff] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#005ac2]">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Defaults Card (Wide Bottom) -->
+                <div
+                    class="chart-container chart-container--flat chart-container--p8 col-span-12 bg-white border border-[#87b5f0]/10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-[#005ac2]" data-icon="database">database</span>
+                        <h3 class="text-xl font-bold text-[#00345e]">Data Defaults</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-semibold text-[#306197]">Default Dataset on Load</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full appearance-none bg-[#eff4ff] border-none rounded-xl px-4 py-3.5 text-sm text-[#00345e] font-medium focus:ring-2 focus:ring-[#005ac2]/20">
+                                    <option>Main Production Line - Q3 Batch</option>
+                                    <option>R&amp;D Prototype Series A</option>
+                                    <option>Secondary Assembly Floor</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-[#306197] pointer-events-none"
+                                    data-icon="expand_more">expand_more</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-semibold text-[#306197]">Default Model for Review</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full appearance-none bg-[#eff4ff] border-none rounded-xl px-4 py-3.5 text-sm text-[#00345e] font-medium focus:ring-2 focus:ring-[#005ac2]/20">
+                                    <option>NeuralSense v4.2 (Production)</option>
+                                    <option>Legacy Vision Core v3.0</option>
+                                    <option>Experimental Low-Latency-Net</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-[#306197] pointer-events-none"
+                                    data-icon="expand_more">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Actions -->
+            <div class="mt-12 flex justify-end gap-4">
+                <button
+                    class="px-6 py-2.5 rounded-xl text-sm font-bold text-[#5f5c78] hover:bg-[#eff4ff] transition-colors">Discard
+                    Changes</button>
+                <button
+                    class="btn btn-primary px-8 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-[#005ac2]/20 transition-all">Save
+                    Preferences</button>
+            </div>
+        </section>
+        <!-- Decorative Aesthetic Element -->
+        <div
+            class="fixed -bottom-24 -right-24 w-96 h-96 bg-gradient-to-br from-[#d8e2ff]/40 to-transparent rounded-full blur-3xl pointer-events-none">
+        </div>
+    </main>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            window.renderSharedLayout({
+                sidebar: {
+                    active: "settings",
+                    footerType: "user-chip",
+                    brandClass: "px-6 py-8",
+                    brandTitleClass: "text-lg font-black text-[#00345e] tracking-tight",
+                    brandSubTitleClass: "text-xs font-medium text-[#306197] opacity-70",
+                    navBaseClass:
+                        "flex items-center px-4 py-3 text-sm font-medium text-[#5f5c78] hover:bg-[#eff4ff]/50 transition-all rounded-lg",
+                    navActiveClass:
+                        "flex items-center px-4 py-3 text-sm font-semibold bg-[#eff4ff] text-[#005ac2] rounded-r-full",
+                    iconSpacingClass: " mr-3"
+                },
+                topbar: {
+                    leftClass: "flex items-center gap-4 flex-1",
+                    rightClass: "flex items-center gap-6",
+                    search: {
+                        variant: "relative",
+                        containerClass: "relative w-96 group",
+                        iconClass: "text-on-surface-variant text-sm",
+                        inputClass:
+                            "w-full bg-[#eff4ff] border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none transition-all",
+                        placeholder: "Search datasets or models..."
+                    },
+                    actionButtonClass:
+                        "btn-icon p-2 text-[#306197] hover:bg-[#eff4ff] rounded-full transition-colors",
+                    notificationDotClass:
+                        "absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface",
+                    showAvatar: true,
+                    avatarWrapperClass:
+                        "w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20",
+                    avatarImageClass: "w-full h-full object-cover",
+                    avatarAlt: "User Profile",
+                    avatarSrc:
+                        "https://lh3.googleusercontent.com/aida-public/AB6AXuA0PZsX9n9fg5WxrCtdyvSk_KUiEqP0j-O6kLfCg80THcHNonUtnayCwLvyeg3cbriccnIfrxADtwSy9ZqA1QHi5fzDT5I2gpf944Hv1RSIcB2p5OEHUMQRNbIpfeC3MnM8bv0liUhvIMiFMUAUMvCT7LprPEeAkV_an-9ZX88GBpYxfJzpTKlF3OMHHOsQE7WxzE4y6qXX0sEN-hNv0gHTrbNYX4BjI10zUpIOqrLDVqZNuYACzi3MDVWQLP_qO-qAK4P9XTVqoA"
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

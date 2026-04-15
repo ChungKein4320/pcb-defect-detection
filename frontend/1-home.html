@@ -1,0 +1,396 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Precision Analytics | Industrial Intelligence</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="./shared-tailwind-config.js"></script>
+  <link href="./shared-ui.css" rel="stylesheet" />
+  <script defer src="./shared-layout.js"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+    }
+  </style>
+</head>
+
+<body class="app-shell bg-surface text-on-surface flex min-h-screen overflow-x-hidden">
+  <!-- SideNavBar (Shared Layout Host) -->
+  <aside class="app-sidebar bg-[#f8f9ff] dark:bg-slate-950 border-r border-[#87b5f0]/15" id="app-sidebar"></aside>
+  <!-- Main Canvas -->
+  <main class="app-main flex flex-col min-h-screen">
+    <!-- TopNavBar (Shared Layout Host) -->
+    <header class="app-topbar bg-[#f8f9ff] dark:bg-slate-950" id="app-topbar"></header>
+    <!-- Page Content -->
+    <div class="content-wrapper space-y-8">
+      <!-- Header Section -->
+      <section class="flex flex-col gap-1">
+        <h2 class="text-3xl font-extrabold text-on-surface tracking-tight">
+          Dashboard Overview
+        </h2>
+        <p class="text-on-surface-variant font-medium">
+          High-level performance and dataset metrics.
+        </p>
+      </section>
+      <!-- KPI Cards: Bento Style -->
+      <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Total Images</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-on-surface tracking-tighter">15,204</span>
+            <span class="text-primary text-xs font-bold mb-1">+12%</span>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Bounding Boxes</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-on-surface tracking-tighter">84,102</span>
+            <span class="text-primary text-xs font-bold mb-1">Live</span>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Defect Classes</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-on-surface tracking-tighter">6</span>
+            <span class="material-symbols-outlined text-primary" data-icon="category">category</span>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack border-l-4 border-primary">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Models</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-on-surface tracking-tighter">12</span>
+            <span class="text-tertiary text-xs font-medium mb-1">Benchmarked</span>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Best mAP</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-primary tracking-tighter">0.942</span>
+            <span class="material-symbols-outlined text-primary text-sm" data-icon="verified" data-weight="fill"
+              style="font-variation-settings: &quot;FILL&quot; 1">verified</span>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--flat kpi-card--p6 kpi-card--stack">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Best F1</span>
+          <div class="flex items-end gap-2">
+            <span class="text-3xl font-black text-primary tracking-tighter">0.915</span>
+            <span class="text-on-surface-variant text-xs font-medium mb-1">Score</span>
+          </div>
+        </div>
+      </section>
+      <!-- Project Overview & Workflow -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Project Overview -->
+        <section
+          class="lg:col-span-7 bg-surface-container-lowest p-8 rounded-xl shadow-[0px_12px_32px_rgba(0,52,94,0.04)] relative overflow-hidden group">
+          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <span class="material-symbols-outlined text-9xl text-primary" data-icon="memory">memory</span>
+          </div>
+          <div class="relative z-10 flex flex-col h-full">
+            <h3 class="text-xl font-bold text-on-surface mb-4">
+              Project Intelligence Focus
+            </h3>
+            <p class="text-on-surface-variant leading-relaxed mb-6 max-w-xl">
+              Our proprietary analytics engine specializes in high-fidelity
+              PCB defect detection. By leveraging a multi-dataset approach
+              with <span class="font-bold text-on-surface">DeepPCB</span>,
+              <span class="font-bold text-on-surface">HRIPCB</span>, and
+              <span class="font-bold text-on-surface">DsPCBSD+</span>, we
+              provide clinical-grade diagnostic precision for industrial
+              manufacturing pipelines.
+            </p>
+            <div class="mt-auto flex gap-4">
+              <span
+                class="px-3 py-1 bg-primary-container text-on-primary-container text-xs font-bold rounded-md">DeepPCB</span>
+              <span
+                class="px-3 py-1 bg-primary-container text-on-primary-container text-xs font-bold rounded-md">HRIPCB</span>
+              <span
+                class="px-3 py-1 bg-primary-container text-on-primary-container text-xs font-bold rounded-md">DsPCBSD+</span>
+            </div>
+          </div>
+        </section>
+        <!-- Workflow Viz -->
+        <section class="lg:col-span-5 bg-surface-container-low p-8 rounded-xl flex flex-col justify-center">
+          <h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-8 text-center">
+            Operational Workflow
+          </h3>
+          <div class="flex items-center justify-between relative px-4">
+            <!-- Connecting Line -->
+            <div class="absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant/30 -translate-y-1/2 z-0"></div>
+            <!-- Steps -->
+            <div class="relative z-10 flex flex-col items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold shadow-lg">
+                1
+              </div>
+              <span
+                class="text-[10px] font-bold text-on-surface-variant text-center leading-tight">Dataset<br />Analysis</span>
+            </div>
+            <div class="relative z-10 flex flex-col items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold shadow-lg">
+                2
+              </div>
+              <span
+                class="text-[10px] font-bold text-on-surface-variant text-center leading-tight">Model<br />Benchmark</span>
+            </div>
+            <div class="relative z-10 flex flex-col items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold border border-outline-variant/50">
+                3
+              </div>
+              <span
+                class="text-[10px] font-bold text-on-surface-variant text-center leading-tight">Detection<br />Review</span>
+            </div>
+            <div class="relative z-10 flex flex-col items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold border border-outline-variant/50">
+                4
+              </div>
+              <span
+                class="text-[10px] font-bold text-on-surface-variant text-center leading-tight">Data<br />Export</span>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Dataset Cards -->
+      <section>
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-on-surface">
+            Integrated Datasets
+          </h3>
+          <button class="text-primary text-sm font-bold flex items-center gap-2 hover:underline">
+            Manage Sources
+            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Dataset 1 -->
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(0,52,94,0.04)] border border-transparent hover:border-outline-variant/20 transition-all">
+            <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-primary" data-icon="database">database</span>
+            </div>
+            <h4 class="font-bold text-on-surface mb-1">DeepPCB</h4>
+            <p class="text-xs text-on-surface-variant mb-4">
+              1,500 pairs of template and test images for high-recall testing.
+            </p>
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-bold text-tertiary bg-tertiary-container/30 px-2 py-0.5 rounded">640x640</span>
+              <span class="text-[10px] font-bold text-on-surface-variant">4.2 GB</span>
+            </div>
+          </div>
+          <!-- Dataset 2 -->
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(0,52,94,0.04)] border border-transparent hover:border-outline-variant/20 transition-all">
+            <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-primary" data-icon="high_res">high_res</span>
+            </div>
+            <h4 class="font-bold text-on-surface mb-1">HRIPCB</h4>
+            <p class="text-xs text-on-surface-variant mb-4">
+              High-resolution industrial PCB scans for precision edge-case
+              analysis.
+            </p>
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-bold text-tertiary bg-tertiary-container/30 px-2 py-0.5 rounded">1280x1280</span>
+              <span class="text-[10px] font-bold text-on-surface-variant">8.9 GB</span>
+            </div>
+          </div>
+          <!-- Dataset 3 -->
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(0,52,94,0.04)] border border-transparent hover:border-outline-variant/20 transition-all">
+            <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-primary" data-icon="developer_board">developer_board</span>
+            </div>
+            <h4 class="font-bold text-on-surface mb-1">DsPCBSD+</h4>
+            <p class="text-xs text-on-surface-variant mb-4">
+              Augmented semantic dataset focusing on micro-solder bridges.
+            </p>
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-bold text-tertiary bg-tertiary-container/30 px-2 py-0.5 rounded">Custom</span>
+              <span class="text-[10px] font-bold text-on-surface-variant">2.1 GB</span>
+            </div>
+          </div>
+          <!-- Dataset 4 (Merged) -->
+          <div
+            class="bg-primary text-on-primary p-6 rounded-xl shadow-[0px_12px_32px_rgba(0,52,94,0.1)] relative overflow-hidden">
+            <div class="absolute -right-4 -bottom-4 opacity-20">
+              <span class="material-symbols-outlined text-8xl" data-icon="merge">merge</span>
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                  <span class="material-symbols-outlined" data-icon="layers">layers</span>
+                </div>
+                <span
+                  class="bg-on-primary text-primary px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Merged</span>
+              </div>
+              <h4 class="font-bold text-white mb-1">Core Master Set</h4>
+              <p class="text-xs text-on-primary/80 mb-4">
+                Consolidated feature space from all primary sources.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-white">15.2k Images</span>
+                <span class="text-[10px] font-bold text-white/70">Optimized</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Quick Navigation Actions -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <a class="group block bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all"
+          href="#">
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-between items-start">
+              <span class="material-symbols-outlined text-primary text-4xl" data-icon="explore">explore</span>
+              <span
+                class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity"
+                data-icon="north_east">north_east</span>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-on-surface">
+                Explore Datasets
+              </h4>
+              <p class="text-sm text-on-surface-variant mt-1">
+                Dive into visual browsing and label verification tools.
+              </p>
+            </div>
+          </div>
+        </a>
+        <a class="group block bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all"
+          href="#">
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-between items-start">
+              <span class="material-symbols-outlined text-primary text-4xl" data-icon="analytics">analytics</span>
+              <span
+                class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity"
+                data-icon="north_east">north_east</span>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-on-surface">
+                Compare Models
+              </h4>
+              <p class="text-sm text-on-surface-variant mt-1">
+                Review side-by-side inference performance metrics.
+              </p>
+            </div>
+          </div>
+        </a>
+        <a class="group block bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all"
+          href="#">
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-between items-start">
+              <span class="material-symbols-outlined text-primary text-4xl" data-icon="fact_check">fact_check</span>
+              <span
+                class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity"
+                data-icon="north_east">north_east</span>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-on-surface">
+                Review Results
+              </h4>
+              <p class="text-sm text-on-surface-variant mt-1">
+                Validate recent defect detections and export reports.
+              </p>
+            </div>
+          </div>
+        </a>
+      </section>
+    </div>
+    <!-- Footer / Bottom Shell Padding for Mobile -->
+    <footer class="mt-auto p-8 border-t border-outline-variant/10 text-center md:text-left">
+      <p class="text-xs text-on-surface-variant font-medium">
+        © 2024 Precision Analytics. All rights reserved. Industrial Grade
+        Intelligence.
+      </p>
+    </footer>
+  </main>
+  <!-- BottomNavBar for Mobile (Authority: JSON Logic) -->
+  <nav
+    class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-bright border-t border-outline-variant/10 flex items-center justify-around px-2 z-50">
+    <a class="flex flex-col items-center gap-1 text-primary" href="#">
+      <span class="material-symbols-outlined" data-icon="home" data-weight="fill"
+        style="font-variation-settings: &quot;FILL&quot; 1">home</span>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+      <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+      <span class="text-[10px] font-medium">Visualize</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+      <span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+      <span class="text-[10px] font-medium">Benchmark</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+      <span class="material-symbols-outlined" data-icon="settings">settings</span>
+      <span class="text-[10px] font-medium">Settings</span>
+    </a>
+  </nav>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      window.renderSharedLayout({
+        sidebar: {
+          active: "home",
+          footerType: "system-status",
+          brandClass: "px-6 py-8",
+          brandTitleClass: "text-lg font-black text-[#00345e] dark:text-blue-50 tracking-tight",
+          brandSubTitleClass: "text-xs font-medium text-on-surface-variant opacity-70",
+          navBaseClass:
+            "flex items-center gap-3 px-4 py-3 text-[#5f5c78] dark:text-slate-400 hover:text-[#00345e] hover:bg-[#eff4ff]/50 transition-all font-medium",
+          navActiveClass:
+            "flex items-center gap-3 px-4 py-3 bg-[#eff4ff] dark:bg-slate-900 text-[#005ac2] dark:text-blue-400 rounded-r-full font-medium transition-all"
+        },
+        topbar: {
+          leftClass: "flex items-center gap-4 flex-1",
+          rightClass: "flex items-center gap-6",
+          search: {
+            variant: "relative",
+            containerClass: "relative w-96 group",
+            iconClass: "text-on-surface-variant text-sm",
+            inputClass:
+              "w-full bg-[#eff4ff] border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none transition-all",
+            placeholder: "Search datasets or models..."
+          },
+          actionButtonClass:
+            "btn-icon p-2 text-[#306197] hover:bg-[#eff4ff] rounded-full transition-colors",
+          notificationDotClass:
+            "absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface",
+          showAvatar: true,
+          avatarWrapperClass:
+            "w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20",
+          avatarImageClass: "w-full h-full object-cover",
+          avatarAlt: "User Profile",
+          avatarSrc:
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuA0PZsX9n9fg5WxrCtdyvSk_KUiEqP0j-O6kLfCg80THcHNonUtnayCwLvyeg3cbriccnIfrxADtwSy9ZqA1QHi5fzDT5I2gpf944Hv1RSIcB2p5OEHUMQRNbIpfeC3MnM8bv0liUhvIMiFMUAUMvCT7LprPEeAkV_an-9ZX88GBpYxfJzpTKlF3OMHHOsQE7WxzE4y6qXX0sEN-hNv0gHTrbNYX4BjI10zUpIOqrLDVqZNuYACzi3MDVWQLP_qO-qAK4P9XTVqoA"
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
