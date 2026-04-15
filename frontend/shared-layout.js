@@ -26,11 +26,26 @@
     }
 
     if (footerType === "settings-link") {
+      var settingsBaseClass = sidebarConfig.navBaseClass || "flex items-center gap-3 px-4 py-3 text-[#5f5c78] dark:text-slate-400 hover:text-[#00345e] hover:bg-[#eff4ff]/50 dark:hover:bg-slate-800 transition-all font-medium text-sm";
+      var settingsActiveClass = sidebarConfig.navActiveClass || "flex items-center gap-3 px-4 py-3 bg-[#eff4ff] dark:bg-slate-900 text-[#005ac2] dark:text-blue-400 rounded-r-full font-medium text-sm";
+      var settingsLinkClass = sidebarConfig.active === "settings" ? settingsActiveClass : settingsBaseClass;
+      var settingsIconClass = (sidebarConfig.iconClass || "material-symbols-outlined") + (sidebarConfig.iconSpacingClass || " mr-3");
+      var settingsFillStyle = sidebarConfig.active === "settings" ? " style=\"font-variation-settings: 'FILL' 1\"" : "";
+      var settingsLabelClass = sidebarConfig.labelClass || "";
+
       return [
         '<div class="p-4 mt-auto">',
-        '<a class="flex items-center px-4 py-3 text-[#5f5c78] hover:bg-[#eff4ff]/50 transition-all font-medium text-sm" href="#">',
-        '<span class="material-symbols-outlined mr-3">settings</span>',
-        'Settings',
+        '<a class="',
+        settingsLinkClass,
+        '" href="#">',
+        '<span class="',
+        settingsIconClass,
+        '"',
+        settingsFillStyle,
+        '>settings</span>',
+        '<span class="',
+        settingsLabelClass,
+        '">Settings</span>',
         '</a>',
         '</div>'
       ].join("");

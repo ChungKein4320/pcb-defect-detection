@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Precision Analytics - Settings</title>
+    <title>Settings</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet" />
@@ -192,14 +192,15 @@
             window.renderSharedLayout({
                 sidebar: {
                     active: "settings",
-                    footerType: "user-chip",
-                    brandClass: "px-6 py-8",
-                    brandTitleClass: "text-lg font-black text-[#00345e] tracking-tight",
-                    brandSubTitleClass: "text-xs font-medium text-[#306197] opacity-70",
+                    includeSettingsInNav: false,
+                    footerType: "settings-link",
+                    brandClass: "px-8 py-10",
+                    brandTitleClass: "text-lg font-black text-[#00345e] dark:text-blue-50 tracking-tight",
+                    brandSubTitleClass: "text-[10px] font-bold text-on-surface-variant tracking-widest uppercase mt-1",
                     navBaseClass:
-                        "flex items-center px-4 py-3 text-sm font-medium text-[#5f5c78] hover:bg-[#eff4ff]/50 transition-all rounded-lg",
+                        "flex items-center px-4 py-3 text-[#5f5c78] hover:bg-[#eff4ff]/50 transition-all font-medium text-sm",
                     navActiveClass:
-                        "flex items-center px-4 py-3 text-sm font-semibold bg-[#eff4ff] text-[#005ac2] rounded-r-full",
+                        "flex items-center px-4 py-3 bg-[#eff4ff] text-[#005ac2] rounded-r-full font-medium text-sm",
                     iconSpacingClass: " mr-3"
                 },
                 topbar: {
